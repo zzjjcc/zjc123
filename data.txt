@@ -1,0 +1,59 @@
+<resources>
+
+    <string name="mdbui_caption_cancel">Annuler</string>
+    <string name="mdbui_caption_confirm">Déterminer</string>
+    <string name="mdbui_caption_unknown">Inconnu</string>
+    <string name="mdbui_caption_price_format">¥%1$s</string>
+    <string name="mdbui_caption_add_price_format">+¥%1$s</string>
+    <string name="mdbui_caption_vip_price_format">VIP ¥%1$s</string>
+    <string name="mdbui_caption_cash_remark">Les créances:%1$s Versé dans：%2$s Monnaie：%3$s</string>
+    <string name="mdbui_caption_yes">Est</string>
+    <string name="mdbui_caption_no">Non</string>
+
+    <string name="mdbui_caption_number_pad_0">0</string>
+    <string name="mdbui_caption_number_pad_1">1</string>
+    <string name="mdbui_caption_number_pad_2">2</string>
+    <string name="mdbui_caption_number_pad_3">3</string>
+    <string name="mdbui_caption_number_pad_4">4</string>
+    <string name="mdbui_caption_number_pad_5">5</string>
+    <string name="mdbui_caption_number_pad_6">6</string>
+    <string name="mdbui_caption_number_pad_7">7</string>
+    <string name="mdbui_caption_number_pad_8">8</string>
+    <string name="mdbui_caption_number_pad_9">9</string>
+    <string name="mdbui_caption_number_pad_10">10</string>
+    <string name="mdbui_caption_number_pad_20">20</string>
+    <string name="mdbui_caption_number_pad_50">50</string>
+    <string name="mdbui_caption_number_pad_100">100</string>
+    <string name="mdbui_caption_number_pad_confirm">Déterminer</string>
+    <string name="mdbui_caption_number_pad_dot">.</string>
+    <string name="mdbui_caption_number_pad_backspace">Backspace</string>
+
+    <string name="mdbui_caption_order_status_all">Tout</string>
+    <string name="mdbui_caption_order_status_pending">Non - paiement</string>
+    <string name="mdbui_caption_order_status_completed">A la fermeture</string>
+    <string name="mdbui_caption_order_status_disposed">Annulé</string>
+
+    <string name="mdbui_caption_order_subtype_all">Tout</string>
+    <string name="mdbui_caption_order_subtype_hall">Manger</string>
+    <string name="mdbui_caption_order_subtype_reserve">De réservation</string>
+    <string name="mdbui_caption_order_subtype_flash">- manger</string>
+    <string name="mdbui_caption_order_subtype_takeout">Emporter</string>
+    <string name="mdbui_caption_order_subtype_pick_up">Mentionner</string>
+    <string name="mdbui_caption_order_subtype_self">Buffet</string>
+    <string name="mdbui_caption_order_time_format">%1$s/%2$s/%3$s %4$s:%5$s:%6$s</string>
+    <string name="mdbui_caption_order_time_format_short">%1$s/%2$s %3$s:%4$s:%5$s</string>
+
+    <string name="mdbui_caption_order_discount_range_partial">Partie remise</string>
+    <string name="mdbui_caption_order_discount_range_all">Une remise</string>
+    <string name="mdbui_caption_order_discount_range_category">Classification de remise</string>
+
+    <string name="mdbui_caption_order_make_status_wait">Et ainsi de suite appelé</string>
+    <string name="mdbui_caption_order_make_status_immediate">C'est - à - dire jouer</string>
+    <string name="mdbui_caption_order_make_status_urgent">Urgent</string>
+    <string name="mdbui_caption_order_make_status_served">A plat</string>
+
+
+    <string name="mdbui_caption_order_gender_male">Hommes</string>
+    <string name="mdbui_caption_order_gender_female">La Présidente</string>
+
+</resources>
