@@ -1,39 +1,68 @@
-from gongzuo import gongzuoclass
-from tkinter import *           # 导入 Tkinter 库
-# http://www.cnblogs.com/kaituorensheng/p/3287652.html
-# http://zetcode.com/gui/tkinter/
-# http://xmsay.com/python%E5%9B%BE%E5%BD%A2%E5%B7%A5%E5%85%B7%E5%8C%85tkinter%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E6%95%B4%E5%85%83%E4%BB%B6%E5%9C%A8%E7%AA%97%E5%8F%A3%E4%BD%8D%E7%BD%AE/
-# http://blog.csdn.net/lw_zhaoritian/article/details/51967529
-gongzuo1=gongzuoclass.gongzuo()
-lackey = []
-listvi = []
-for i in list(range(len(gongzuo1))):
-    # print(type(i))
-    lilinshi = [gongzuo1[i][1], ]
-    lilinshiy = [gongzuo1[i][0], ]
-    lackey = lackey + lilinshiy
-    listvi = listvi + lilinshi
-print(lackey,'/n',listvi)
-# 创建窗口对象的背景色
-root = Tk()
-root.title('翻译')
-root.geometry('800x600')
-root.resizable(width=False, height=True)
-# 创建两个列表
-li     = lackey
-movie  = listvi
-listb  = Listbox(root)          #  创建两个列表组件
-listb2 = Listbox(root)
-for item in li:                 # 第一个小部件插入数据
-    listb.insert(0,item)
+from tkinter import *   # from x import * is bad practice
+from tkinter.ttk import *
 
-for item in movie:              # 第二个小部件插入数据
-    listb2.insert(0,item)
+# http://tkinter.unpythonic.net/wiki/VerticalScrolledFrame
 
-frm = Frame(root)
+class VerticalScrolledFrame(Frame):
+    """A pure Tkinter scrollable frame that actually works!
+    * Use the 'interior' attribute to place widgets inside the scrollable frame
+    * Construct and pack/place/grid normally
+    * This frame only allows vertical scrolling
 
-listb.pack(side=LEFT)                    # 将小部件放置到主窗口中
-listb2.pack(side=RIGHT)
+    """
+    def __init__(self, parent, *args, **kw):
+        Frame.__init__(self, parent, *args, **kw)
+
+        # create a canvas object and a vertical scrollbar for scrolling it
+        vscrollbar = Scrollbar(self, orient=VERTICAL)
+        vscrollbar.pack(fill=Y, side=RIGHT, expand=FALSE)
+        canvas = Canvas(self, bd=0, highlightthickness=0,
+                        yscrollcommand=vscrollbar.set)
+        canvas.pack(side=LEFT, fill=BOTH, expand=TRUE)
+        vscrollbar.config(command=canvas.yview)
+
+        # reset the view
+        canvas.xview_moveto(0)
+        canvas.yview_moveto(0)
+
+        # create a frame inside the canvas which will be scrolled with it
+        self.interior = interior = Frame(canvas)
+        interior_id = canvas.create_window(0, 0, window=interior,
+                                           anchor=NW)
+
+        # track changes to the canvas and frame width and sync them,
+        # also updating the scrollbar
+        def _configure_interior(event):
+            # update the scrollbars to match the size of the inner frame
+            size = (interior.winfo_reqwidth(), interior.winfo_reqheight())
+            canvas.config(scrollregion="0 0 %s %s" % size)
+            if interior.winfo_reqwidth() != canvas.winfo_width():
+                # update the canvas's width to fit the inner frame
+                canvas.config(width=interior.winfo_reqwidth())
+        interior.bind('<Configure>', _configure_interior)
+
+        def _configure_canvas(event):
+            if interior.winfo_reqwidth() != canvas.winfo_width():
+                # update the inner frame's width to fill the canvas
+                canvas.itemconfigure(interior_id, width=canvas.winfo_width())
+        canvas.bind('<Configure>', _configure_canvas)
 
 
-root.mainloop()                 # 进入消息循环
+if __name__ == "__main__":
+
+    class SampleApp(Tk):
+        def __init__(self, *args, **kwargs):
+            root = Tk.__init__(self, *args, **kwargs)
+
+
+            self.frame = VerticalScrolledFrame(root)
+            self.frame.pack()
+            self.label = Label(text="Shrink the window to activate the scrollbar.")
+            self.label.pack()
+            buttons = []
+            for i in range(10):
+                buttons.append(Button(self.frame.interior, text="Button " + str(i)))
+                buttons[-1].pack()
+
+    app = SampleApp()
+    app.mainloop()

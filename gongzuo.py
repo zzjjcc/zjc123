@@ -1,5 +1,8 @@
 import xmltodict
 import tkinter.messagebox as messagebox
+from tkinter import *
+
+
 class gongzuoclass (object):
     def gongzuo(self='data.txt'):
         # 打开文件
@@ -37,3 +40,17 @@ class gongzuoclass (object):
             e = [d, ]
             f = f + e
         return f
+
+    def makeform(root, lists):
+        entries = []
+        for field in lists:
+            row = Frame(root)
+            lab = Label(row, width=50, text=field, anchor='w')
+            ent = Entry(row,width=50,highlightthickness=1,highlightcolor='red',takefocus=1)
+            row.pack(side=TOP, fill=X, padx=5, pady=5)
+            lab.pack(side=LEFT)
+            ent.pack(side=RIGHT, expand=YES, fill=X)
+            entries.append((field, ent))
+        print(entries)
+
+        return entries
